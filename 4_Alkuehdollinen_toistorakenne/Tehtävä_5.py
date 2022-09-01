@@ -7,7 +7,7 @@ while i < 6:
     if kayt.casefold() == "python" and "rules" == sala:
         print("Tervetuloa")
         break
-    if(i >= 5):
+    if i >= 5:
         print("Pääsy evätty")
         break
     i += 1

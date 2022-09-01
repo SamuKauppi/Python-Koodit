@@ -1,17 +1,16 @@
-i = "alku";
 pienin = 0
 suurin = 0
 
-while i != "":
+while True:
     luku = input("Syötä luku: ")
-    if(luku == ""):
+    if luku == "":
         break
     else:
         luku = float(luku)
 
-    if(luku < pienin):
+    if luku < pienin or pienin == 0:
         pienin = luku
-    if(luku > suurin):
+    if luku > suurin or suurin == 0:
         suurin = luku
 
 print(f"Suurin luku: {suurin}")
