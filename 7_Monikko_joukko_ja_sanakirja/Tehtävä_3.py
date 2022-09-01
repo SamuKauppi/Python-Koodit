@@ -4,6 +4,7 @@ def OnkoKirjastossa(kirjasto, avain):
             return True
     return False
 
+
 lentoasemat = {}
 x = True
 while x:
@@ -32,4 +33,3 @@ while x:
         x = False
     else:
         print("Väärä komento")
-
