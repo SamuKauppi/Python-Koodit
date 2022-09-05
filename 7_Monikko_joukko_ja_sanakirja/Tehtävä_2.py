@@ -1,7 +1,6 @@
 nimet = set()
 lukumaara = 0
-x = True
-while x:
+while True:
     nimi = input("Syötä nimi: ")
 
     if nimi == "":

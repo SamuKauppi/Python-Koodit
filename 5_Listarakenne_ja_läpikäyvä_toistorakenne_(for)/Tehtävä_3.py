@@ -2,7 +2,9 @@ luku = int(input("Syötä luku: "))
 onAlkuluku = True
 
 for x in range(luku):
-    if x != 1 and x != luku and x != 0:
+    if x < 2:
+        x = 2
+    if x != luku:
         if luku % x == 0:
             onAlkuluku = False
             break

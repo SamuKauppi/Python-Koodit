@@ -6,8 +6,7 @@ def OnkoKirjastossa(kirjasto, avain):
 
 
 lentoasemat = {}
-x = True
-while x:
+while True:
     print("\n")
     print("Haluatko lisätä vai hakea lentoasemoja? (add, search, x)")
     komento = input("Syöttö: ")

@@ -1,6 +1,5 @@
-i = 1
 print("Kirjaudu sisään")
-while i < 6:
+while True:
     kayt = input("Syötä käyttäjätunnus: ")
     sala = input("Syötä salasana: ")
 
