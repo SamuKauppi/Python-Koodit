@@ -1,5 +1,5 @@
 lista = []
-while 0 == 0:
+while True:
     syote = input("Syötä luku (tyhjä lopettaa): ")
     if syote == "":
         break
@@ -8,10 +8,7 @@ while 0 == 0:
     lista.append(syote)
 
 lista.sort(reverse=True)
-x = 5
-if len(lista) < 5:
-    x = len(lista)
 
 print("Viisi suurinta: ")
-for i in range(x):
-    print(lista[i])
+for i in lista[0:5]:
+    print(i)
