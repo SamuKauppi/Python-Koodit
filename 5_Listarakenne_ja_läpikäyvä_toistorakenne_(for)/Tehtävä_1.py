@@ -1,6 +1,8 @@
 import random
 
 noppienMaara = int(input("Syötä arpakuutioiden lukumäärä: "))
-
+summa = 0
 for i in range(noppienMaara):
-    print(f"Noppa {i} arvo on {random.randint(1, 6)}")
+    noppa = random.randint(1, 6)
+    summa += noppa
+print(f"Noppien summa on {summa}")
