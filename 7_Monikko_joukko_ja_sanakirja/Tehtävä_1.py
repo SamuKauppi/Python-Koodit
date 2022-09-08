@@ -3,4 +3,4 @@ vuodenAjat = ("talvi", "talvi", "kevät", "kevät", "kevät", "kesä", "kesä",
 
 kuukausi = int(input("Syötä kuukauden numero (1-12): "))
 
-print(f"Nyt on {vuodenAjat[kuukausi-1]}")
+print(f"Nyt on {vuodenAjat[kuukausi - 1]}")

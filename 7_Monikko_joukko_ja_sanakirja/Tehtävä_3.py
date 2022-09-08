@@ -29,6 +29,7 @@ while True:
             print("Lentoasemaa ei löytynyt")
 
     elif komento == "x":
-        x = False
+        print("Poistutaan ohjelmasta...")
+        break
     else:
         print("Väärä komento")
