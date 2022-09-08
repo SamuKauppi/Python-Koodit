@@ -1,7 +1,7 @@
 luku = int(input("Syötä luku: "))
 onAlkuluku = True
 
-for x in range(1, luku):
+for x in range(2, luku):
     if luku % x == 0:
         onAlkuluku = False
         break
