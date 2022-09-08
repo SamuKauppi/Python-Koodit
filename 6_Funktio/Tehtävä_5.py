@@ -1,6 +1,6 @@
 def ParittomatPois(luvut):
     for x in luvut:
-        if (x % 2 != 0):
+        if x % 2 != 0:
             luvut.remove(x)
     return
 

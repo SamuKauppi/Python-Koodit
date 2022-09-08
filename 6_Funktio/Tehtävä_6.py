@@ -7,6 +7,7 @@ def PizzanArvo(halkaisijaCm, hinta):
     arvo = pintaAlaM / hinta
     return arvo
 
+
 pizzat = []
 
 for x in range(2):
@@ -21,5 +22,3 @@ for x in range(2):
         arvokkaimmanId = x
 
 print(f"Arokkain pizza on indeksin {arvokkaimmanId} pizza")
-
-
