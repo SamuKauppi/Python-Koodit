@@ -10,6 +10,8 @@ while True:
     print("\n")
     print("Haluatko lisätä vai hakea lentoasemoja? (add, search, x)")
     komento = input("Syöttö: ")
+
+    #Lisää lentoasema
     if komento == "add":
         icoa = input("Syötä ICOA-koodi: ")
         if OnkoKirjastossa(lentoasemat, icoa):
@@ -21,6 +23,7 @@ while True:
         lentoasemat.update({icoa: nimi})
         print("Lentoasema lisätty")
 
+    #Hae lentokenttä
     elif komento == "search":
         icoa = input("Syötä ICOA-koodi: ")
         if OnkoKirjastossa(lentoasemat, icoa):
@@ -28,8 +31,11 @@ while True:
         else:
             print("Lentoasemaa ei löytynyt")
 
+    #Poistu ohjelmasta
     elif komento == "x":
         print("Poistutaan ohjelmasta...")
         break
+
+    #Virhe
     else:
         print("Väärä komento")

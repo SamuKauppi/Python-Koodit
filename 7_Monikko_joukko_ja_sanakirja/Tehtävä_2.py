@@ -8,7 +8,7 @@ while True:
 
     nimet.add(nimi)
     if len(nimet) != lukumaara:
-        print("Uusi nimi")
+        print("Uusi nimi lisätty")
         lukumaara = len(nimet)
     else:
         print("Aiemmin syötetty nimi")
