@@ -28,4 +28,5 @@ maakoodi_b = input("Syötä toinen koodi: ")
 
 kaksi_asemaa = etsi_lentoasemat(yhteys, maakoodi_a, maakoodi_b)
 if len(kaksi_asemaa) > 0:
-    print(f"Lentoasemien välinen etäisyys on: {distance.distance(kaksi_asemaa[0], kaksi_asemaa[1])}")
+    gap = distance.distance(kaksi_asemaa[0], kaksi_asemaa[1]).km
+    print(f"Lentoasemien välinen etäisyys on: {gap:0.3f}km")
