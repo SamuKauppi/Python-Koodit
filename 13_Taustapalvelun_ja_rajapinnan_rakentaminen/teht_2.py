@@ -1,3 +1,4 @@
+import json
 from flask import Flask, request
 import mysql.connector
 
@@ -57,6 +58,8 @@ def lentoaseman_tietoja():
         "Name": name,
         "Municipality": city
     }
+
+    json_data = json.dumps(vastaus, default=lambda o: o.__dict__, indent=4)
     return vastaus
 
 

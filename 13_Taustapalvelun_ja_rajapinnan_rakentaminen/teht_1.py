@@ -1,4 +1,5 @@
 from flask import Flask, request
+import json
 
 app = Flask(__name__)
 
@@ -20,6 +21,8 @@ def alkuluku():
         "Number": luku,
         "isPrime": is_prime,
     }
+
+    json_data = json.dumps(vastaus, default=lambda o: o.__dict__, indent=4)
     return vastaus
 
 
