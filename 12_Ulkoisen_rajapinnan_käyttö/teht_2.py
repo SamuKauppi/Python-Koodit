@@ -24,12 +24,18 @@ def search_weather(lat, lon, key):
     return return_value
 
 
-place = input("Syötä paikkakunnan nimi: ")
+while True:
+    player_input = input("Syötä paikkakunnan nimi ja kerron sen sään (tyhjä lopettaa): ")
 
-API_key = "bf045cfc3c3e9ae9ee15ae3bbb0faf63"
-value = search_country(place, API_key)
-weather = search_weather(value[0]["lat"], value[0]["lon"], API_key)
-temp = weather["main"]["temp"]
-print(f"{temp} Celcius")
+    if player_input == "":
+        print("Kiitos!")
+        break
 
-
+    API_key = "bf045cfc3c3e9ae9ee15ae3bbb0faf63"
+    country = search_country(player_input, API_key)
+    if country:
+        weather = search_weather(country[0]["lat"], country[0]["lon"], API_key)
+        temp = weather["main"]["temp"]
+        print(f"{country[0]['name']} {temp} Celcius")
+    else:
+        print("Hakua ei löytynyt")
