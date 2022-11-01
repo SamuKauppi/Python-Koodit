@@ -7,10 +7,16 @@ class Hissi:
 
     def siirry_kerrokseen(self, kerros):
         if self.alinkerros <= kerros <= self.ylinkerros:
-            self.nykyinenkerros = kerros
-            print(f"Siirryit kerrokseen {self.nykyinenkerros}")
+            while kerros != self.nykyinenkerros:
+                if kerros < self.nykyinenkerros:
+                    self.kerros_alas()
+                elif kerros > self.nykyinenkerros:
+                    self.kerros_ylos()
+                else:
+                    break
         else:
             print("Valittu kerros on virheellinen")
+        print(f"Saavuit kerrokseen {self.nykyinenkerros}")
         return
 
     def kerros_ylos(self):

@@ -7,10 +7,16 @@ class Hissi:
 
     def siirry_kerrokseen(self, kerros):
         if self.alinkerros <= kerros <= self.ylinkerros:
-            self.nykyinenkerros = kerros
-            print(f"Siirryit kerrokseen {self.nykyinenkerros}")
+            while kerros != self.nykyinenkerros:
+                if kerros < self.nykyinenkerros:
+                    self.kerros_alas()
+                elif kerros > self.nykyinenkerros:
+                    self.kerros_ylos()
+                else:
+                    break
         else:
             print("Valittu kerros on virheellinen")
+        print(f"Saavuit kerrokseen {self.nykyinenkerros}")
         return
 
     def kerros_ylos(self):
@@ -41,10 +47,13 @@ class Talo:
 
     def palohalytys(self):
         print("Palohalytyys!")
-        for i in self.hissit:
-            i.siirry_kerrokseen(0)
+        for i in range(len(self.hissit)):
+            self.aja_hissia(i, 0)
         return
 
 
 aut = Talo(0, 10, 3)
+aut.aja_hissia(0, 10)
+aut.aja_hissia(1, 5)
+aut.aja_hissia(2, 7)
 aut.palohalytys()

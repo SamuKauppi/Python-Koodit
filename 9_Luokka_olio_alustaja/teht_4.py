@@ -37,8 +37,6 @@ while not has_won:
         i.kulje(1)
         if i.matka >= 10000:
             has_won = True
-            print(f"Voittaja on: {i.rekisteri}")
-            break
 
 autot.sort()
 print("---------------")
