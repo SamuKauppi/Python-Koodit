@@ -35,6 +35,7 @@ class Sahkoauto(Auto):
         if self.akku > 0:
             self.akku -= matka * self.keskiKulutus
         if self.akku < 0:
+            self.matka -= self.keskiKulutus / abs(self.akku)
             self.akku = 0
             self.nopeus = 0
 
@@ -49,6 +50,7 @@ class Polttoauto(Auto):
         if self.bensan_maara > 0:
             self.bensan_maara -= matka * self.keskiKulutus
         if self.bensan_maara < 0:
+            self.matka -= self.keskiKulutus / abs(self.bensan_maara)
             self.nopeus = 0
             self.bensan_maara = 0
 
@@ -63,33 +65,16 @@ class Kilpailu:
     def tunti_kuluu(self):
         for a in self.autot:
             a.kulje(1)
-            a.kuluta(a.matka)
+            a.kuluta(a.nopeus)
         return
-
-    def tulosta_tilanne(self):
-        for a in self.autot:
-            print(f"Rekisterinumero: {a.rekisteri}")
-            print(f"Huippunopeus: {a.huippunopeus}")
-            print(f"Nykyinen nopeus: {a.nopeus}")
-            print(f"Kuljettu matka: {a.matka}")
-            print("---------------")
-        return
-
-    def kilpailu_ohi(self):
-        for a in self.autot:
-            if a.matka >= 10000:
-                print(f"Voittaja on: {a.rekisteri}")
-                self.autot.sort()
-                return True
-        return False
 
 
 autot = []
 autot.append(Sahkoauto("ABC-15", 180, 52.5))
 autot.append(Polttoauto("ACD-123", 165, 32.3))
 
-autot[0].kiihdyta(100)
-autot[1].kiihdyta(100)
+autot[0].kiihdyta(85)
+autot[1].kiihdyta(80)
 
 kilpailu = Kilpailu("Juttu", 10000, autot)
 
@@ -98,8 +83,10 @@ for i in range(3):
 
 print(f"Sähköauton kulutus: {autot[0].keskiKulutus * 100:0.2f} kwh/100 km")
 print(f"Sähköauton kuljettu matka: {autot[0].matka:0.2f} km")
+print(f"Sähköauton nopeus matkalla: {autot[0].nopeus} km/h")
 print(f"Sähköauton jäljellä oleva akku: {autot[0].akku:0.2f} kwh")
 print("")
 print(f"Polttomoottoriauton kulutus: {autot[1].keskiKulutus * 100:0.2f} l/100 km")
 print(f"Polttomoottoriauton kuljettu matka: {autot[1].matka:0.2f} km")
+print(f"Polttomoottoriauton nopeus matkalla: {autot[1].nopeus} km/h")
 print(f"Polttomoottoriauton jäljellä oleva bensa: {autot[1].bensan_maara:0.2f} l")
