@@ -48,7 +48,7 @@ class Talo:
     def palohalytys(self):
         print("Palohalytyys!")
         for i in range(len(self.hissit)):
-            self.aja_hissia(i, 0)
+            self.aja_hissia(i, self.hissit[i].alinkerros)
         return
 
 

@@ -11,7 +11,7 @@ class Kirja(Julkaisu):
         self.sivumaara = sivumaara
 
     def Tulosta_tiedot(self):
-        print(f"Nimi: {super().nimi}")
+        print(f"Nimi: {self.nimi}")
         print(f"Kirjoittaja: {self.kirjoittaja}")
         print(f"Sivumäärä: {self.sivumaara}")
 
@@ -22,7 +22,7 @@ class Lehti(Julkaisu):
         self.paatoimittaja = paatoimittaja
 
     def Tulosta_tiedot(self):
-        print(f"Nimi: {super().nimi}")
+        print(f"Nimi: {self.nimi}")
         print(f"Päätoimittaja: {self.paatoimittaja}")
 
 
@@ -30,5 +30,6 @@ kirja = Kirja("Hytti n:o 6", "Rosa Liksom", 200)
 lehti = Lehti("Aku Ankka", "Aki Hyyppä")
 
 kirja.Tulosta_tiedot()
+print("")
 lehti.Tulosta_tiedot()
 

@@ -41,9 +41,9 @@ class Kilpailu:
     def tulosta_tilanne(self):
         for a in self.autot:
             print(f"Rekisterinumero: {a.rekisteri}")
-            print(f"Huippunopeus: {a.huippunopeus}")
-            print(f"Nykyinen nopeus: {a.nopeus}")
-            print(f"Kuljettu matka: {a.matka}")
+            print(f"Huippunopeus: {a.huippunopeus} km/h")
+            print(f"Nykyinen nopeus: {a.nopeus} km/h")
+            print(f"Kuljettu matka: {a.matka} m")
             print("---------------")
         return
 
@@ -74,4 +74,4 @@ while not spel.kilpailu_ohi():
         spel.tulosta_tilanne()
 
 spel.tulosta_tilanne()
-print(f"Kilpailun aika: {aika}")
+print(f"Kilpailun aika: {aika} h")
