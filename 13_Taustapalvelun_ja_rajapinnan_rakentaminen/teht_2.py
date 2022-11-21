@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request
+from flask import Flask, request, Response
 import mysql.connector
 
 
@@ -27,6 +27,8 @@ def get_from_database(connection, column, table, where):
     sql = "SELECT " + column + " FROM " + table + " " + where
     values = execute_sql(connection, sql)
     values = remove_pointless(values)
+    if len(values) < 1:
+        return ""
     return values[0]
 
 
@@ -44,23 +46,41 @@ def remove_pointless(s):
 app = Flask(__name__)
 
 
-@app.route('/lentoaseman_tietoja')
-def lentoaseman_tietoja():
-    args = request.args
-    koodi = str(args.get("koodi"))
-    connection = open_database()
+@app.route('/kentta/<koodi>')
+def kentta(koodi):
+    try:
+        connection = open_database()
 
-    name = get_from_database(connection, "name", "airport", f"where ident = '{koodi}'")
-    city = get_from_database(connection, "municipality", "airport", f"where ident = '{koodi}'")
+        name = get_from_database(connection, "name", "airport", f"where ident = '{koodi}'")
+        city = get_from_database(connection, "municipality", "airport", f"where ident = '{koodi}'")
 
+        if name == '' or city == '':
+            raise ValueError('Icao-code not found')
+
+        answer = {
+            "ICAO": koodi.upper(),
+            "Name": name,
+            "Municipality": city
+        }
+    except ValueError:
+        errorcode = 400
+        answer = {
+            "status": errorcode,
+            "text": "invalid code"
+        }
+
+    json_data = json.dumps(answer, default=lambda o: o.__dict__, indent=4)
+    return json_data
+
+
+@app.errorhandler(404)
+def page_not_found(virhekoodi):
     vastaus = {
-        "ICAO": koodi,
-        "Name": name,
-        "Municipality": city
+        "status": "404",
+        "teksti": "page not found"
     }
-
-    json_data = json.dumps(vastaus, default=lambda o: o.__dict__, indent=4)
-    return vastaus
+    jsonvast = json.dumps(vastaus)
+    return Response(response=jsonvast, status=404, mimetype="application/json")
 
 
 if __name__ == '__main__':

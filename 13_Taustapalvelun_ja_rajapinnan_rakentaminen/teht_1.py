@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 import json
 
 app = Flask(__name__)
@@ -11,19 +11,34 @@ def onko_alkuluku(luku):
     return True
 
 
-@app.route('/alkuluku')
-def alkuluku():
-    args = request.args
-    luku = float(args.get("luku"))
-    is_prime = onko_alkuluku(luku)
+@app.route('/alkuluku/<luku>')
+def alkuluku(luku):
+    try:
+        is_prime = onko_alkuluku(float(luku))
 
+        answer = {
+            "Number": luku,
+            "isPrime": is_prime,
+        }
+    except ValueError:
+        errorcode = 400
+        answer = {
+            "status": errorcode,
+            "text": "invalid code"
+        }
+
+    json_data = json.dumps(answer, default=lambda o: o.__dict__, indent=4)
+    return json_data
+
+
+@app.errorhandler(404)
+def page_not_found(virhekoodi):
     vastaus = {
-        "Number": luku,
-        "isPrime": is_prime,
+        "status": "404",
+        "teksti": "page not found"
     }
-
-    json_data = json.dumps(vastaus, default=lambda o: o.__dict__, indent=4)
-    return vastaus
+    jsonvast = json.dumps(vastaus)
+    return Response(response=jsonvast, status=404, mimetype="application/json")
 
 
 if __name__ == '__main__':
