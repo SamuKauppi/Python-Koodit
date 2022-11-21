@@ -34,7 +34,7 @@ def alkuluku(luku):
 @app.errorhandler(404)
 def page_not_found(virhekoodi):
     vastaus = {
-        "status": "404",
+        "status": virhekoodi,
         "teksti": "page not found"
     }
     jsonvast = json.dumps(vastaus)
